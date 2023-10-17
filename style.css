@@ -5,12 +5,31 @@
 }
 
 :root {
-  font-family: "Times New Roman", Times, serif;
+  font-family: degular-display, sans-serif;
+  font-weight: 800;
+  font-style: normal;
   font-size: 14px;
+  --stroke: 2px;
+  --red: #ec2900;
+  --beige: #e6dad8;
+  --darkbeige: #c8bebc;
+  --green: #6d8760;
+  --switchWidth: 100px;
+  --switchHeight: 46px;
+}
+
+body {
+  background-color: var(--beige);
+}
+
+@font-face {
+  font-family: "Unifont";
+  src: url("/Users/joannesuk/Library/Fonts/unifont-10.0.06.ttf");
 }
 
 span {
   font-size: 10rem;
+  color: var(--red);
 }
 
 #clock {
@@ -22,16 +41,85 @@ span {
   left: auto;
   right: auto;
   margin: 3rem;
-  /* border: 2px solid red; */
 }
 
 #clock > div {
   display: flex;
   flex-direction: column;
   width: 20rem;
-  /* border: 2px solid green; */
+  text-align: center;
 }
 
 .bot {
-  border-top: 3px solid black;
+  border-top: var(--stroke) solid var(--red);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   toggle                                   */
+/* -------------------------------------------------------------------------- */
+
+.switch {
+  display: inline-block;
+  position: relative;
+  width: var(--switchWidth);
+  height: var(--switchHeight);
+  left: calc(50% - var(--switchWidth) / 2);
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: var(--stroke) solid var(--red);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: var(--switchHeight);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: calc(var(--switchHeight) - 8px);
+  width: calc(var(--switchHeight) - 8px);
+  left: 2px;
+  bottom: 2px;
+  background-color: var(--beige);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 50%;
+  background-image: url("/og-rose-rabbit-clean.png");
+  background-size: 100% 100%;
+}
+
+input:checked + .slider {
+  background-color: var(--red);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--red);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(calc(var(--switchWidth) - var(--switchHeight)));
+  -ms-transform: translateX(calc(var(--switchWidth) - var(--switchHeight)));
+  transform: translateX(calc(var(--switchWidth) - var(--switchHeight)));
+}
+
+.clue {
+  visibility: hidden;
+  font-size: 2rem;
+  margin-top: 2rem;
+  font-family: rafaella, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: capitalize;
 }

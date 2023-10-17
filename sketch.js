@@ -37,8 +37,9 @@ function updateTime() {
 
   /* ---------------------------------- month --------------------------------- */
 
-  monthsTop.textContent = reduce(now.getMonth(), 12)[0];
-  monthsBot.textContent = reduce(now.getMonth(), 12)[1];
+  const correctedMonth = now.getMonth() + 1;
+  monthsTop.textContent = reduce(correctedMonth, 12)[0];
+  monthsBot.textContent = reduce(correctedMonth, 12)[1];
 
   /* ----------------------------------- day ---------------------------------- */
 
@@ -50,7 +51,7 @@ function updateTime() {
     };
 
     for (const d in totalDays) {
-      if (totalDays[d].includes(month)) {
+      if (totalDays[d].includes(correctedMonth)) {
         return parseInt(d);
       }
     }
@@ -95,3 +96,20 @@ function updateTime() {
 }
 
 const keepTime = setInterval(updateTime, 1000);
+
+const checkbox = document.getElementById("checkbox");
+const clues = document.getElementsByClassName("clue");
+
+checkbox.addEventListener("click", () => {
+  if (checkbox.checked) {
+    for (let i = 0; i < clues.length; i++) {
+      clues[i].style.visibility = "visible";
+    }
+    console.log("toggled");
+  } else {
+    for (let i = 0; i < clues.length; i++) {
+      clues[i].style.visibility = "hidden";
+    }
+    console.log("untoggled");
+  }
+});
