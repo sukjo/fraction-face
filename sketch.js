@@ -103,12 +103,14 @@ const clues = document.getElementsByClassName("clue");
 checkbox.addEventListener("click", () => {
   if (checkbox.checked) {
     for (let i = 0; i < clues.length; i++) {
-      clues[i].style.visibility = "visible";
+      // clues[i].style.visibility = "visible";
+      clues[i].style.opacity = "1";
     }
     console.log("toggled");
   } else {
     for (let i = 0; i < clues.length; i++) {
-      clues[i].style.visibility = "hidden";
+      // clues[i].style.visibility = "hidden";
+      clues[i].style.opacity = "0.001";
     }
     console.log("untoggled");
   }

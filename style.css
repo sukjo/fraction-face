@@ -98,6 +98,7 @@ span {
   border-radius: 50%;
   background-image: url("/og-rose-rabbit-clean.png");
   background-size: 100% 100%;
+  transition: transform 0.75s;
 }
 
 input:checked + .slider {
@@ -115,11 +116,13 @@ input:checked + .slider:before {
 }
 
 .clue {
-  visibility: hidden;
+  /* visibility: hidden; */
+  opacity: 0.001;
   font-size: 2rem;
   margin-top: 2rem;
   font-family: rafaella, sans-serif;
   font-weight: 400;
   font-style: normal;
   text-transform: capitalize;
+  transition: opacity 1s ease-in-out;
 }
